@@ -1,0 +1,30 @@
+<%- include("partials/header") %>
+<nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
+    <a class="navbar-brand" href="home">myBookList</a>
+
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" href="profile">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="logout">Log Out</a>
+        </li>
+    </ul>
+
+  </nav>
+
+<!-- <ul>
+    <li style="float: left;"><a href="home" class="bar"><h3>myBookList</h3></a></li>
+    <li><a href="profile" class="bar">Profile</a></li>
+    <li><a href="logout" class="bar">Log Out</a></li>
+</ul> -->
+<h1 style="margin-left: 38%;">Add Book to list:</h1>
+<div style="margin-left: 38%;">
+    <form action="/add" method="post">
+        <label for="">BookID :</label>
+        <div class="d-grid col-sm-4 gap-2">
+            <input type="text" name="bookID" class="form-control">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>  
+    </form>
+</div>

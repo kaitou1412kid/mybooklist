@@ -1,0 +1,47 @@
+<%- include("partials/header") %> 
+
+<nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
+    <a class="navbar-brand" href="home">myBookList</a>
+
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" href="profile">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="logout">Log Out</a>
+        </li>
+    </ul>
+
+  </nav>
+
+<!-- <ul>
+    <li style="float: left;"><a href="home" class="bar"><h3>myBookList</h3></a></li>
+    <li><a href="profile" class="bar">Profile</a></li>
+    <li><a href="logout" class="bar">Log Out</a></li>
+</ul> -->
+
+<h2>Username: <%= name %> </h2>
+<h2>Book List</h2>
+<table class="table">
+    <tr>
+        <th>S.N</th>
+        <th>Title</th>
+        <th>Cover</th>
+        <th>.</th>
+    </tr>
+    <% var n=1 %>
+    <% bookDetail.forEach(function(book){ %>
+    <tr>
+        <td><%= n++ %></td>
+        <td><%= book.title %></td>
+        <td><img src="<%= book.cover %> " alt="" style="height: 50px; width: 50px;"></td>
+        <form action="/profile" method="post">
+            <input type="hidden" name="hid" value="<%= book.bookID %>">
+            <td><button>Delete</button></td>
+        </form>  
+    </tr>  
+    <% }) %>
+</table>
+
+<p>Add Book to the list: <a href="add"><button class="btn btn-primary">Add Book</button></a></p>
+<%- include("partials/footer") %>

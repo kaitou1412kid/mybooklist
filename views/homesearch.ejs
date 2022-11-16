@@ -1,0 +1,64 @@
+<%- include("partials/header") %>
+
+<nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
+    <a class="navbar-brand" href="home">myBookList</a>
+    <% if(auths === false){%> 
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="signup">SignUp</a>
+      </li>
+    </ul>
+    <% }else { %>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" href="profile">Profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="logout">Log Out</a>
+        </li>
+    </ul>
+    <% } %> 
+  </nav>
+
+<!-- <ul>
+    <li style="float: left;"><a href="home" class="bar"><h3>myBookList</h3></a></li>
+    <% if(auths === false){%> 
+    <li><a href="login" class="bar">Login</a></li>
+    <li><a href="signup" class="bar">Sign Up</a></li>
+    <% }else { %>
+    <li><a href="profile" class="bar">Profile</a></li>
+    <li><a href="logout" class="bar">Log Out</a></li>
+    <% } %> 
+</ul> -->
+
+<div class="search">
+    <h1>Search Books:</h1>
+    <form action="/home" method="post">
+    <input type="text" name="searchBook">
+    <button type="submit">Search</button>
+    </form>
+</div>
+
+<table class="table">
+    <tr>
+        <th>S.N</th>
+        <th>Title</th>
+        <th>Book ID</th>
+        <th>Cover</th>
+    </tr>
+<!-- below code in bood.txt -->
+    <% var n=1 %>
+    <% bookD.forEach(function(book){ %>
+    <tr>
+        <td><%= n++ %></td>
+        <td><%= book.name %></td>
+        <td><%= book.book_id %></td>
+        <td><img src="<%= book.cover %> " alt="" style="height: 50px; width: 50px;"></td>  
+    </tr>  
+    <% }) %> 
+</table>
+
+<%- include("partials/footer") %>
