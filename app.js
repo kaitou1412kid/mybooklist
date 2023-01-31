@@ -245,7 +245,7 @@ app.post("/login",function(req, res){
 });
 
 app.get("/profile",function(req, res){
-	if(req.isAuthenticated()){
+	if(passport.authenticate("local")){
 		User.findOne({username : uname},function(err, foundUser){
 			if(err){
 				res.render("profile",{name : uname});
