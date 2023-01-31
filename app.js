@@ -260,7 +260,7 @@ app.get("/profile",function(req, res){
 });
 
 app.post("/profile",function(req, res){
-	if(req.isAuthenticated()){
+	if(passport.authenticate("local")){
 		var delname = parseInt(req.body.hid);
 		User.findOneAndUpdate({username : uname},{$pull : {books : {bookID : delname}}},function(err, foundUser){
 			if(!err){
