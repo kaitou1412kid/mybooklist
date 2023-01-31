@@ -84,7 +84,7 @@ passport.use(new GoogleStrategy({
 app.get("/home",function(req,res){
 	const month = today.getMonth() + 1;
 	const year = today.getFullYear();
-	var auth = passport.authenticate("local");
+	var auth = req.isAuthenticated();
 
 	const options = {
 		"method": "GET",
@@ -111,7 +111,7 @@ app.get("/home",function(req,res){
 });
 
 app.post("/home",function(req, res){
-	var auth = passport.authenticate("local");
+	var auth = req.isAuthenticated();
 	var searched = req.body.searchBook;
 	var arr = searched.split(" ");
 	var resultingarr = arr.join("+");
