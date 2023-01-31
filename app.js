@@ -63,13 +63,13 @@ passport.deserializeUser(function(id, done){
     });
 });
 
-//to hold username and password
+//to hold username
 var uname;
 
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "https://encouraging-overcoat-newt.cyclic.app/auth/google/home"
+    callbackURL: "http://localhost:3000/auth/google/home"
   },
   function(accessToken, refreshToken, profile, cb) {
 	uname = profile.displayName;
@@ -142,7 +142,7 @@ app.get("/auth/google",
 app.get("/auth/google/home", 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
-    // Successful authentication, redirect home.
+    // Successful authentication, redirect profile.
     res.redirect("/profile");
   });
 
@@ -282,5 +282,5 @@ app.get("/logout", function(req, res){
 });
 
 app.listen(process.env.PORT || 3000,function(){
-    console.log("Server is running on port 3000");
+    console.log("Server is running");
 });
