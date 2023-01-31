@@ -265,7 +265,10 @@ app.post("/profile",function(req, res){
 		User.findOneAndUpdate({username : uname},{$pull : {books : {bookID : delname}}},function(err, foundUser){
 			if(!err){
 				console.log("olo");
-				res.redirect("/profile");
+				if(passport.authenticate("local")){
+					res.redirect("/profile");
+				}
+				
 			}
 		})	
 	}
