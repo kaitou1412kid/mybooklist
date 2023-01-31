@@ -11,6 +11,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
 const { doesNotReject } = require("assert");
 const today = new Date();
+const pass = process.env.PASSWORD;
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB",{useNewUrlParser : true});
+mongoose.connect("mongodb+srv://admin-kritagya:"+pass+"@cluster1.bjcgamc.mongodb.net/userDB",{useNewUrlParser : true});
 // mongoose.set("useCreateIndex", true);
 
 const bookSchema = {
@@ -100,7 +101,7 @@ app.get("/home",function(req,res){
 	const request = https.request(options, function (response) {
 		response.on("data", function(data){
 			const bookData = JSON.parse(data);
-
+			console.log(bookData);
 			res.render("home",{bookD : bookData, mon : month, yr : year, auths : auth});
 		})
 		
