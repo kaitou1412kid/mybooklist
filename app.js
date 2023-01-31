@@ -147,7 +147,7 @@ app.get("/auth/google/home",
   });
 
 app.get("/add",function(req, res){
-	if(req.isAuthenticated()){
+	if(passport.authenticate("local")){
 		res.render("add");
 	}else {
 		res.redirect("/signup");
