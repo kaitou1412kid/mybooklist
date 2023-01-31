@@ -69,7 +69,7 @@ var uname;
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/home"
+    callbackURL: "https://encouraging-overcoat-newt.cyclic.app/auth/google/home"
   },
   function(accessToken, refreshToken, profile, cb) {
 	uname = profile.displayName;
