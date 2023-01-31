@@ -212,7 +212,7 @@ app.post("/signup",function(req,res){
 						res.redirect("/signup");
 					}else {
 						uname = req.body.username;
-						passport.authenticate("local")(req, res, function(){
+						passport.authenticate("google")(req, res, function(){
 							res.redirect("/profile");
 						});
 					}
@@ -237,7 +237,7 @@ app.post("/login",function(req, res){
 		if(err){
 			console.log(err);
 		}else {
-			passport.authenticate("local")(req, res, function(){
+			passport.authenticate("google")(req, res, function(){
 				res.redirect("/profile");
 			});
 		}
